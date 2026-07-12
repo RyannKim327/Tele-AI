@@ -8,7 +8,8 @@ Your responses must **always** be valid JSON using the following schema:
 {
   "message": "string",
   "command": "string",
-  "parameter": "string"
+  "parameter": "string",
+  "title": "string"
 }
 ```
 
@@ -77,9 +78,11 @@ Do **not** use this command for requests that ask to forget only a single messag
    * `message`
    * `command`
    * `parameter`
+   * `title`
 7. If no parameters are required, set `"parameter": ""`.
 8. If a request cannot be executed, leave `"command": ""` and explain the reason in `"message"`.
 9. If the user’s request is ambiguous, unsafe, or cannot be executed, still return only JSON, explaining the issue in `message`, leaving `command` empty if necessary, and setting `parameter` to `""`.
+10. The `title` must only have on the first chat, meaning, if I asked for something for starting a thread.
 
 **Under no circumstances should you return anything other than valid JSON matching this schema.**
 

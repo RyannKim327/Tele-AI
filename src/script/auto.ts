@@ -68,6 +68,8 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     message_thread_id: event.reply_to_message?.message_thread_id
   })
 
+  console.log(extract)
+
   if (extract.command === "clear-chat") {
     clearChat(api, event, extract)
   } else if (extract.command === "verse") {
@@ -77,6 +79,11 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
   } else {
     api.sendMessage(event.chat.id, extract.message, {
       message_thread_id: event.reply_to_message?.message_thread_id
+    })
+  }
+  if (extract.title) {
+    api.editForumTopic(event.chat.id, event.reply_to_message?.message_thread_id ?? 0, {
+      name: extract.title
     })
   }
 }
