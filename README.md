@@ -16,9 +16,12 @@
 
 *   **Empathetic Listening:** Engineered to act as a supportive companion, offering active listening and a compassionate outlet for users.
 *   **Continuous Chat Memory:** Stores conversational context securely per Telegram `chat.id` in a local dataset to enable fluid, context-aware dialogues.
-*   **Intelligent Built-in Commands:** Seamlessly parses commands embedded in AI responses (e.g., automatically clears the chat history when a user requests a fresh start).
+*   **Intelligent Built-in Commands:** Seamlessly parses commands embedded in AI JSON responses:
+    *   `clear-chat`: Resets/clears the conversational history for a fresh start.
+    *   `verse`: Scrapes and retrieves motivational Bible verses based on user request/state.
+    *   `guitar`: Searches and fetches song lyrics and guitar chords when users want to play music.
 *   **Flexible Setup:** Supports both production-ready **Webhooks** (using Express) and rapid-development **Long Polling**.
-*   **OpenRouter Integration:** Leverages any free or premium LLMs available through OpenRouter (such as `openrouter/free`).
+*   **OpenRouter Integration:** Leverages any free or premium LLMs available through OpenRouter (defaults to `tencent/hy3:free`).
 
 ---
 
@@ -29,6 +32,24 @@
 *   **Telegram Integration:** [node-telegram-bot-api](https://github.com/yagop/node-telegram-bot-api)
 *   **Web Framework:** [Express 5](https://expressjs.com/) (for webhook setup)
 *   **API Client:** [Axios](https://github.com/axios/axios) (to communicate with OpenRouter)
+*   **Bible Scraping:** [biblegateway-scrape](https://www.npmjs.com/package/biblegateway-scrape) (to extract verses on demand)
+*   **Guitar Chords:** [ultimate-guitar](https://www.npmjs.com/package/ultimate-guitar) (to retrieve songs and chords)
+
+---
+
+## 🤖 JSON-Driven Command Routing
+
+Krysanne communicates in a structured JSON format to coordinate conversation and perform actions. Every response is parsed by a Markdown/JSON extractor to route command execution:
+
+```json
+{
+  "message": "A human-readable explanation or chat response.",
+  "command": "clear-chat | verse | guitar | (empty)",
+  "parameter": "Arguments or search query for the command"
+}
+```
+
+This allows the bot to dynamically trigger backend scripts based on AI determination.
 
 ---
 
@@ -101,10 +122,13 @@ TeleAI/
 ├── src/
 │   ├── index.ts        # Bot initialization & polling/webhook routing
 │   ├── core.ts         # Event router and start action handler
+│   ├── interface.ts    # TypeScript definitions for AI responses
 │   ├── prompt.md       # Core identity & system prompt for Krysanne
 │   ├── script/
 │   │   ├── auto.ts         # AI integration & dataset store update logic
-│   │   └── clear-chat.ts   # Handler for resetting conversation state
+│   │   ├── clear-chat.ts   # Handler for resetting conversation state
+│   │   ├── guitar.ts       # Ultimate Guitar chords retrieval
+│   │   └── verse.ts        # Bible Gateway verse scraping
 │   └── utils/
 │       ├── console.ts      # Stylized terminal logger
 │       └── md-extractor.ts # Utility for parsing commands from AI markdown
