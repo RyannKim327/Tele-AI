@@ -61,7 +61,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
   if (extract.command === "clear-chat") {
     clearChat(api, event, extract.message)
   } else if (extract.command === "verse") {
-    bible(api, event, body, extract.parameter)
+    bible(api, event, extract.message, extract.parameter)
   } else {
     api.sendMessage(event.chat.id, extract.message)
   }
