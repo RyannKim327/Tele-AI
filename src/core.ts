@@ -7,6 +7,8 @@ export default function core(api: TelegramBot, event: Message, regex: RegExpExec
     if (body.startsWith("/start")) {
       api.sendMessage(event.chat.id, "Hello")
     } else {
+      // console.log(event)
+      // return
       auto(api, event, body)
     }
   }

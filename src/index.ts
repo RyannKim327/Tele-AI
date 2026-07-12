@@ -2,7 +2,7 @@ import TelegramBot, { Message } from "node-telegram-bot-api";
 import * as dotenv from "dotenv"
 import log from "./utils/console";
 import express, { Express, Request, Response } from "express"
-import { existsSync, mkdirSync, rm } from "fs";
+// import { existsSync, mkdirSync, rm } from "fs";
 import core from "./core";
 
 function main() {
@@ -25,7 +25,7 @@ function main() {
         │                                         │
         ╰―――――――――――――――――――――――――――――――――――――――――╯`,
   );
-  const directory = `${__dirname}/temp`;
+  // const directory = `${__dirname}/temp`;
 
   try {
     let api: TelegramBot | null = null
@@ -61,15 +61,15 @@ function main() {
       log("Server Initiator", "Developed by MPOP Reverse II")
     }
 
-    if (existsSync(directory)) {
-      rm(directory, {
-        recursive: true
-      }, (e) => { })
-    }
-
-    setTimeout(() => {
-      mkdirSync(directory)
-    }, 1500)
+    // if (existsSync(directory)) {
+    //   rm(directory, {
+    //     recursive: true
+    //   }, (e) => { })
+    // }
+    //
+    // setTimeout(() => {
+    //   mkdirSync(directory)
+    // }, 1500)
 
     log("Welcome", "Server Loaded and Running")
 

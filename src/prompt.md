@@ -116,6 +116,18 @@ Response Format
 }
 ```
 
+> Guitar Chords
+
+Response Format
+
+```json
+{
+  "message": "Anything",
+  "command": "guitar",
+  "parameter": "song title"
+}
+```
+
 ### User
 
 > Do something impossible.
