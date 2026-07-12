@@ -5,6 +5,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import TelegramBot, { Message } from "node-telegram-bot-api";
 import clearChat from "./clear-chat";
 import bible from "./verse";
+import { aiResponse } from "@/interface";
 
 dotenv.config()
 
@@ -43,7 +44,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     }
   });
 
-  const extract = mdExtractor(data.choices[0].message.content as string)
+  const extract: aiResponse = mdExtractor(data.choices[0].message.content as string) as aiResponse
 
   messages.push({
     "role": "assistant",
@@ -58,10 +59,11 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
 
   console.log(data.choices[0].message.content)
   console.log(extract)
+
   if (extract.command === "clear-chat") {
-    clearChat(api, event, extract.message)
+    clearChat(api, event, extract)
   } else if (extract.command === "verse") {
-    bible(api, event, extract.message, extract.parameter)
+    bible(api, event, extract)
   } else {
     api.sendMessage(event.chat.id, extract.message)
   }

@@ -1,7 +1,8 @@
+import { aiResponse } from "@/interface";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import TelegramBot, { Message } from "node-telegram-bot-api";
 
-export default function clearChat(api: TelegramBot, event: Message, body: string) {
+export default function clearChat(api: TelegramBot, event: Message, body: aiResponse) {
   // TODO: To check the existence of the file to prevent errors
   if (!existsSync("data")) {
     mkdirSync("data")
@@ -14,5 +15,5 @@ export default function clearChat(api: TelegramBot, event: Message, body: string
   store[event.chat.id] = []
 
   writeFileSync("data/dataset.json", JSON.stringify(store, null, 2), "utf-8")
-  api.sendMessage(event.chat.id, body)
+  api.sendMessage(event.chat.id, body.message)
 }
