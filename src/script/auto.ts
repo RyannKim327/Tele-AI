@@ -7,6 +7,7 @@ import clearChat from "./clear-chat";
 import bible from "./verse";
 import { aiResponse } from "@/interface";
 import ultiguitar from "./guitar";
+import newThread from "./new-thread";
 
 dotenv.config()
 
@@ -76,11 +77,14 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     bible(api, event, extract)
   } else if (extract.command === "guitar") {
     ultiguitar(api, event, extract)
+  } else if (extract.command === "new-thead") {
+    newThread(api, event, extract)
   } else {
     api.sendMessage(event.chat.id, extract.message, {
       message_thread_id: event.reply_to_message?.message_thread_id
     })
   }
+
   if (extract.title) {
     api.editForumTopic(event.chat.id, event.reply_to_message?.message_thread_id ?? 0, {
       name: extract.title
