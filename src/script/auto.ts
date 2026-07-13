@@ -32,9 +32,17 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     {
       "role": "system",
       "content": readFileSync("src/prompt.md", "utf-8")
-    },
-    ...store[user] ?? []
+    }
   ]
+
+  if (event.from?.username) {
+    messages.push({
+      "role": "system",
+      "content": `Call the user ${event.from?.username} as the username of the user, but tell them that he may able to change it based on what they want. Inform then that you them based on their username fetch by the system.`
+    })
+  }
+
+  messages.push(...store[user] ?? [])
 
   messages.push({
     "role": "user",
@@ -61,6 +69,10 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
 
   messages.shift()
 
+  // TODO: To remove the initial name
+  if (event.from?.username) {
+    messages.shift()
+  }
   store[user] = messages
 
   writeFileSync("data/dataset.json", JSON.stringify(store, null, 2), "utf-8")
@@ -69,6 +81,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     message_thread_id: event.reply_to_message?.message_thread_id
   })
 
+  // INFO: I let this log for debugging purposes
   console.log(extract)
 
   if (extract.command === "clear-chat") {
@@ -77,7 +90,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     bible(api, event, extract)
   } else if (extract.command === "guitar") {
     ultiguitar(api, event, extract)
-  } else if (extract.command === "new-thead") {
+  } else if (extract.command === "new-thread") {
     newThread(api, event, extract)
   } else {
     api.sendMessage(event.chat.id, extract.message, {
@@ -85,7 +98,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     })
   }
 
-  if (extract.title) {
+  if (extract.title && extract.command !== "new-thread") {
     api.editForumTopic(event.chat.id, event.reply_to_message?.message_thread_id ?? 0, {
       name: extract.title
     })
