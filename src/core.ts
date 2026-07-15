@@ -1,5 +1,5 @@
 import TelegramBot, { Message } from "node-telegram-bot-api";
-import auto from "./script/auto";
+import auto from "@/middleware/auto";
 
 export default function core(api: TelegramBot, event: Message, regex: RegExpExecArray | null) {
   if (regex) {

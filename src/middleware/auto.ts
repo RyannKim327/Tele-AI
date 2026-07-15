@@ -3,19 +3,12 @@ import axios from "axios";
 import * as dotenv from "dotenv"
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import TelegramBot, { Message } from "node-telegram-bot-api";
-import clearChat from "./clear-chat";
-import bible from "./verse";
 import { aiResponse } from "@/interface";
-import ultiguitar from "./guitar";
-import newThread from "./new-thread";
-// import { decrypt, encrypt } from "json-enc-dec";
-import imageGenerator from "./imgen";
 
 dotenv.config()
 
 export default async function auto(api: TelegramBot, event: Message, body: string) {
 
-  console.log(event)
   let code = process.env.BOT_CODE ?? "default"
 
   let user = event.from?.id.toString() || event.chat.id.toString()
@@ -99,18 +92,12 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
   // INFO: I let this log for debugging purposes
   // console.log(extract)
 
-  // TODO: This is just temporary, I will create a better algorithm for this part
-  if (extract.command === "clear-chat") {
-    clearChat(api, event, extract)
-  } else if (extract.command === "verse") {
-    bible(api, event, extract)
-  } else if (extract.command === "guitar") {
-    ultiguitar(api, event, extract)
-  } else if (extract.command === "imgen") {
-    imageGenerator(api, event, extract)
-  } else if (extract.command === "new-thread") {
-    newThread(api, event, extract)
+  // TODO: Auto add script method
+  if (existsSync(`src/script/${extract.command}.ts`)) {
+    const { default: script } = await import(`@/script/${extract.command}`)
+    script(api, event, extract)
   } else {
+    // TODO: default callback
     api.sendMessage(event.chat.id, extract.message, {
       message_thread_id: event.reply_to_message?.message_thread_id
     })

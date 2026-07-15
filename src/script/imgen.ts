@@ -5,7 +5,8 @@ import TelegramBot, { Message } from "node-telegram-bot-api";
 
 dotenv.config()
 
-export default async function imageGenerator(api: TelegramBot, event: Message, body: aiResponse) {
+
+export default async function script(api: TelegramBot, event: Message, body: aiResponse) {
 
   api.sendMessage(event.chat.id, body.message, {
     message_thread_id: event.reply_to_message?.message_thread_id
@@ -26,3 +27,4 @@ export default async function imageGenerator(api: TelegramBot, event: Message, b
     message_thread_id: event.reply_to_message?.message_thread_id
   })
 }
+

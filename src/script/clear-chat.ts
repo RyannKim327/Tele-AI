@@ -3,8 +3,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { decrypt, encrypt } from "json-enc-dec";
 import TelegramBot, { Message } from "node-telegram-bot-api";
 
-export default async function clearChat(api: TelegramBot, event: Message, body: aiResponse) {
-
+export default async function script(api: TelegramBot, event: Message, body: aiResponse) {
   let user = event.from?.id.toString() || event.chat.id.toString()
   let code = process.env.BOT_CODE ?? "default"
 
@@ -39,3 +38,4 @@ export default async function clearChat(api: TelegramBot, event: Message, body: 
     api.deleteMessage(message.chat.id, message.message_id)
   }, 5000)
 }
+
