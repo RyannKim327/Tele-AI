@@ -9,6 +9,7 @@ import { aiResponse } from "@/interface";
 import ultiguitar from "./guitar";
 import newThread from "./new-thread";
 import { decrypt, encrypt } from "json-enc-dec";
+import imageGenerator from "./imgen";
 
 dotenv.config()
 
@@ -91,7 +92,7 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
   })
 
   // INFO: I let this log for debugging purposes
-  console.log(extract)
+  // console.log(extract)
 
   // TODO: This is just temporary, I will create a better algorithm for this part
   if (extract.command === "clear-chat") {
@@ -100,6 +101,8 @@ export default async function auto(api: TelegramBot, event: Message, body: strin
     bible(api, event, extract)
   } else if (extract.command === "guitar") {
     ultiguitar(api, event, extract)
+  } else if (extract.command === "imgen") {
+    imageGenerator(api, event, extract)
   } else if (extract.command === "new-thread") {
     newThread(api, event, extract)
   } else {
