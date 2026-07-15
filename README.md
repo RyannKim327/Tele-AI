@@ -10,6 +10,9 @@
 
 **TeleAI** is an empathetic, always-on AI assistant hosted on Telegram. Named **Krysanne**, this chatbot acts as a companion designed to listen, converse, and offer a supportive presence for individuals who may feel isolated, distressed, or simply need a safe space to share their thoughts. Powered by **OpenRouter AI** models, TeleAI aims to provide comfort and human-like warmth to prevent loneliness and mental health crises.
 
+> [!IMPORTANT]
+> **Disclaimer:** TeleAI (Krysanne) is an AI companion meant to lend a supportive ear and offer temporary comfort. It is **not** designed to replace physical human touch, real relationships, or professional help/counseling for emotional distress and mental health problems.
+
 ---
 
 ## 🌟 Key Features
@@ -153,7 +156,7 @@ TeleAI/
 
 ## 🔒 Privacy & Safety
 
-We take user privacy and emotional safety seriously. For details on how user data is stored, processed, and deleted, as well as our mental health crisis disclaimer, please refer to our [PRIVACY.md](PRIVACY.md).
+We take user privacy and emotional safety seriously. TeleAI (Krysanne) is not a substitute for professional mental health support or physical human connection, but rather an AI companion to provide a temporary, listening hand during difficult moments. For details on how user data is stored, processed, and deleted, as well as our full mental health crisis disclaimer, please refer to our [PRIVACY.md](PRIVACY.md).
 
 ---
 
