@@ -4,6 +4,8 @@ import log from "./utils/console";
 import express, { Express, Request, Response } from "express"
 import core from "./core";
 import { EventInterface } from "./interface";
+import fs from "fs";
+import path from "path";
 
 function main() {
   dotenv.config()
@@ -27,18 +29,60 @@ function main() {
   );
 
   try {
+    const app: Express = express()
+    app.use(express.json())
+
+    // Serving styles, images and pages
+    app.get("/style.css", (req: Request, res: Response) => {
+      res.sendFile(path.join(process.cwd(), "template", "style.css"))
+    })
+
+    app.get("/krysanne_banner.jpg", (req: Request, res: Response) => {
+      res.sendFile(path.join(process.cwd(), "template", "krysanne_banner.jpg"))
+    })
+
+    const renderPage = (pageName: string, res: Response) => {
+      try {
+        const layoutPath = path.join(process.cwd(), "template", "index.html")
+        const contentPath = path.join(process.cwd(), "template", `${pageName}.html`)
+        if (!fs.existsSync(layoutPath) || !fs.existsSync(contentPath)) {
+          return res.status(404).send("Page not found")
+        }
+        let layout = fs.readFileSync(layoutPath, "utf-8")
+        const content = fs.readFileSync(contentPath, "utf-8")
+        layout = layout.replace("{{CONTENT}}", content)
+        res.setHeader("Content-Type", "text/html")
+        res.send(layout)
+      } catch (err: any) {
+        res.status(500).send("Internal Server Error")
+      }
+    }
+
+    app.get("/", (req: Request, res: Response) => {
+      renderPage("home", res)
+    })
+
+    app.get("/privacy", (req: Request, res: Response) => {
+      renderPage("privacy", res)
+    })
+
+    app.get("/readme", (req: Request, res: Response) => {
+      renderPage("readme", res)
+    })
+
+    app.get("/contributors", (req: Request, res: Response) => {
+      renderPage("contributors", res)
+    })
+
+    app.get("/license", (req: Request, res: Response) => {
+      renderPage("license", res)
+    })
+
     let api: TelegramBot | null = null
 
     if (url) {
       // TODO: Webhook setup
       api = new TelegramBot(token)
-      const app: Express = express()
-      app.use(express.json())
-
-      app.get("/", (req: Request, res: Response) => {
-        res.send("Currently working")
-      })
-
       api.setWebhook(`${url}/bot${token}`)
 
       app.post(`/bot${token}`, (req: Request, res: Response) => {
@@ -46,19 +90,19 @@ function main() {
         res.sendStatus(200)
       })
 
-      app.listen(process.env.PORT || 3000, () => {
-        log("Server Initiator", "Server starter using Webhook")
-        log("Server Initiator", "Developed by MPOP Reverse II")
-      })
-
+      log("Server Initiator", "Telegram configured using Webhook")
     } else {
       // TODO: Polling Setup
       api = new TelegramBot(token, {
         polling: true
       })
-      log("Server Initiator", "Server starter using polling")
-      log("Server Initiator", "Developed by MPOP Reverse II")
+      log("Server Initiator", "Telegram configured using polling")
     }
+
+    app.listen(process.env.PORT || 3000, () => {
+      log("Server Initiator", `Web server listening on port ${process.env.PORT || 3000}`)
+      log("Server Initiator", "Developed by MPOP Reverse II")
+    })
 
     log("Welcome", "Server Loaded and Running")
 
