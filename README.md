@@ -5,6 +5,8 @@
 [![Language: TypeScript](https://img.shields.io/badge/Language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
 [![wakatime](https://wakatime.com/badge/github/RyannKim327/Tele-AI.svg)](https://wakatime.com/badge/github/RyannKim327/Tele-AI)
 
+![TeleAI Banner](template/krysanne_banner.jpg)
+
 > **"What I aim is to give people a friend, to prevent suicide cases. To call someone who listen to them."**
 > — *TeleAI Mission Statement*
 
