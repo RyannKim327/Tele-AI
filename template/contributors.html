@@ -1,74 +1,97 @@
-<section class="card" id="contributors-main-card">
-    <h1 id="contributors-title">Project Contributors</h1>
-    <p>
-        Thank you for your interest in contributing to <strong>TeleAI</strong>! This project is driven by a profound mission: <strong>to provide a friend, alleviate isolation, and help prevent mental health crises.</strong> Your contributions play a vital role in realizing this vision.
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: transparent !important;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="card" id="contributors-main-card">
+            <h1 id="contributors-title">Project Contributors</h1>
+            <p>
+                Thank you for your interest in contributing to <strong>TeleAI</strong>! This project is driven by a profound mission: <strong>to provide a friend, alleviate isolation, and help prevent mental health crises.</strong> Your contributions play a vital role in realizing this vision.
+            </p>
 
-    <h2 id="lead-maintainer-title">👑 Lead Author & Visionary</h2>
-    <div class="contributors-grid" id="maintainers-grid-container">
-        <div class="contributor-card" id="contributor-ryann">
-            <div class="contributor-avatar">RK</div>
-            <div class="contributor-info">
-                <h4>Ryann Kim M. Sesgundo</h4>
-                <p>Core Creator, Lead Architect & Maintainer</p>
-                <p><a href="https://github.com/RyannKim327/Tele-AI" target="_blank"><i class="fa-brands fa-github"></i> GitHub Profile</a></p>
+            <h2 id="lead-maintainer-title">👑 Lead Author & Visionary</h2>
+            <div class="contributors-grid" id="maintainers-grid-container">
+                <div class="contributor-card" id="contributor-ryann">
+                    <div class="contributor-avatar">RK</div>
+                    <div class="contributor-info">
+                        <h4>Ryann Kim M. Sesgundo</h4>
+                        <p>Core Creator, Lead Architect & Maintainer</p>
+                        <p><a href="https://github.com/RyannKim327/Tele-AI" target="_blank"><i class="fa-brands fa-github"></i> GitHub Profile</a></p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <h2 id="contribute-guidelines-title">🤝 How to Contribute</h2>
-    <p>
-        We welcome and encourage community contributions, whether you're fixing bugs, adding new features, improving the assistant prompt, or updating documentation.
-    </p>
+            <h2 id="contribute-guidelines-title">🤝 How to Contribute</h2>
+            <p>
+                We welcome and encourage community contributions, whether you're fixing bugs, adding new features, improving the assistant prompt, or updating documentation.
+            </p>
 
-    <h3 id="standards-title">📜 Code of Conduct & Standards</h3>
-    <ol>
-        <li>
-            <strong>Keep it Compassionate:</strong> TeleAI is built to support people in need. All changes to prompts (<code>src/prompt.md</code>) and conversational flows must maintain a warm, safe, supportive, and non-judgmental tone.
-        </li>
-        <li>
-            <strong>Safety First:</strong> Ensure that no user data, private chats, API keys, or credentials are ever logged, cached insecurely, or exposed to external servers except through the secure OpenRouter API endpoint.
-        </li>
-        <li>
-            <strong>Strict Typing:</strong> The codebase is written in TypeScript. Avoid using the <code>any</code> keyword or bypassing TypeScript compilation warnings.
-        </li>
-        <li>
-            <strong>Modular Design:</strong> Follow the existing project architecture (routing events through <code>core.ts</code>, creating modular scripts in <code>src/script/</code>, and parsing markdown commands with utility functions).
-        </li>
-    </ol>
+            <h3 id="standards-title">📜 Code of Conduct & Standards</h3>
+            <ol>
+                <li>
+                    <strong>Keep it Compassionate:</strong> TeleAI is built to support people in need. All changes to prompts (<code>src/prompt.md</code>) and conversational flows must maintain a warm, safe, supportive, and non-judgmental tone.
+                </li>
+                <li>
+                    <strong>Safety First:</strong> Ensure that no user data, private chats, API keys, or credentials are ever logged, cached insecurely, or exposed to external servers except through the secure OpenRouter API endpoint.
+                </li>
+                <li>
+                    <strong>Strict Typing:</strong> The codebase is written in TypeScript. Avoid using the <code>any</code> keyword or bypassing TypeScript compilation warnings.
+                </li>
+                <li>
+                    <strong>Modular Design:</strong> Follow the existing project architecture (routing events through <code>core.ts</code>, creating modular scripts in <code>src/script/</code>, and parsing markdown commands with utility functions).
+                </li>
+            </ol>
 
-    <h3 id="getting-started-title">🚀 Getting Started</h3>
-    <ul>
-        <li><strong>Fork & Clone:</strong> Fork the repository on GitHub and clone your fork locally.</li>
-        <li><strong>Create a Branch:</strong> Create a branch detailing the feature or fix (e.g., <code>feat/custom-empathetic-responses</code>).</li>
-        <li><strong>Implement & Test:</strong> Make your changes and ensure that compilation and syntax are correct.</li>
-        <li><strong>Format Code:</strong> Adhere to existing spacing and code conventions.</li>
-        <li><strong>Submit a Pull Request:</strong> Open a detailed Pull Request explaining what was changed, why it is beneficial, and how it aligns with the project’s mission.</li>
-    </ul>
+            <h3 id="getting-started-title">🚀 Getting Started</h3>
+            <ul>
+                <li><strong>Fork & Clone:</strong> Fork the repository on GitHub and clone your fork locally.</li>
+                <li><strong>Create a Branch:</strong> Create a branch detailing the feature or fix (e.g., <code>feat/custom-empathetic-responses</code>).</li>
+                <li><strong>Implement & Test:</strong> Make your changes and ensure that compilation and syntax are correct.</li>
+                <li><strong>Format Code:</strong> Adhere to existing spacing and code conventions.</li>
+                <li><strong>Submit a Pull Request:</strong> Open a detailed Pull Request explaining what was changed, why it is beneficial, and how it aligns with the project’s mission.</li>
+            </ul>
 
-    <h2 id="recognition-title">📜 Recognition</h2>
-    <p>
-        All contributions—no matter how small—will be recognized here. If you contribute code, prompts, translation, or document improvements, feel free to add your name to the list below in your Pull Request!
-    </p>
+            <h2 id="recognition-title">📜 Recognition</h2>
+            <p>
+                All contributions—no matter how small—will be recognized here. If you contribute code, prompts, translation, or document improvements, feel free to add your name to the list below in your Pull Request!
+            </p>
 
-    <h3 id="community-contribs-title">Community Contributors</h3>
-    <div class="contributors-grid" id="community-grid-container">
-        <div class="contributor-card" id="contributor-placeholder">
-            <div class="contributor-avatar"><i class="fa-solid fa-user-plus"></i></div>
-            <div class="contributor-info">
-                <h4>Your Name Here</h4>
-                <p>Join the team! Submit a PR to add your name.</p>
-                <p><a href="https://github.com/RyannKim327/Tele-AI/pulls" target="_blank"><i class="fa-solid fa-code-pull-request"></i> Submit PR</a></p>
+            <h3 id="community-contribs-title">Community Contributors</h3>
+            <div class="contributors-grid" id="community-grid-container">
+                <div class="contributor-card" id="contributor-placeholder">
+                    <div class="contributor-avatar"><i class="fa-solid fa-user-plus"></i></div>
+                    <div class="contributor-info">
+                        <h4>Your Name Here</h4>
+                        <p>Join the team! Submit a PR to add your name.</p>
+                        <p><a href="https://github.com/RyannKim327/Tele-AI/pulls" target="_blank"><i class="fa-solid fa-code-pull-request"></i> Submit PR</a></p>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
 
-    <div class="info-box" style="border-left-color: var(--accent-purple); background: rgba(139, 92, 246, 0.08);" id="contributor-quote-box">
-        <p style="font-style: italic; font-size: 1.1rem; color: var(--text-primary); text-align: center; margin-bottom: 0;">
-            “No one is useless in this world who lightens the burdens of it for another.”
-        </p>
-        <p style="text-align: center; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 0; font-size: 0.95rem;">
-            — Charles Dickens
-        </p>
-    </div>
-</section>
+            <div class="info-box" style="border-left-color: var(--accent-purple); background: rgba(139, 92, 246, 0.08);" id="contributor-quote-box">
+                <p style="font-style: italic; font-size: 1.1rem; color: var(--text-primary); text-align: center; margin-bottom: 0;">
+                    “No one is useless in this world who lightens the burdens of it for another.”
+                </p>
+                <p style="text-align: center; color: var(--text-secondary); margin-top: 0.5rem; margin-bottom: 0; font-size: 0.95rem;">
+                    — Charles Dickens
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

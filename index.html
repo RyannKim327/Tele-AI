@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TeleAI (Krysanne) - An empathetic, always-on AI companion hosted on Telegram designed to listen, comfort, and support you.">
+    <title>TeleAI — Compassionate AI Telegram Companion</title>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom StyleSheet -->
+    <link rel="stylesheet" href="template/style.css">
+    <style>
+        #app-content {
+            width: 100%;
+            border: none;
+            overflow: hidden;
+            display: block;
+            transition: opacity 0.2s ease;
+        }
+        .fade-out {
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container navbar">
+            <a href="#home" class="logo" id="logo-main">
+                <i class="fa-solid fa-robot"></i> TeleAI
+            </a>
+            <nav aria-label="Main Navigation">
+                <ul class="nav-links">
+                    <li><a href="#home" class="nav-link" id="nav-home"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="#readme" class="nav-link" id="nav-readme"><i class="fa-solid fa-book-open"></i> Readme</a></li>
+                    <li><a href="#privacy" class="nav-link" id="nav-privacy"><i class="fa-solid fa-shield-halved"></i> Privacy</a></li>
+                    <li><a href="#contributors" class="nav-link" id="nav-contributors"><i class="fa-solid fa-users"></i> Contributors</a></li>
+                    <li><a href="#license" class="nav-link" id="nav-license"><i class="fa-solid fa-gavel"></i> License</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- SPA Viewport -->
+        <object id="app-content" type="text/html" data="template/home.html"></object>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-text" id="footer-text-copyright">
+                &copy; 2026 Master Piece of Paper. Released under the Educational Community License 2.0 (ECL-2.0).
+            </div>
+            <ul class="footer-links" id="footer-links-list">
+                <li><a href="#readme">Readme</a></li>
+                <li><a href="#privacy">Privacy Policy</a></li>
+                <li><a href="#contributors">Contributors</a></li>
+                <li><a href="#license">License</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const obj = document.getElementById("app-content");
+            const navLinks = document.querySelectorAll(".nav-links a, .footer-links a, .logo");
+
+            // Mapping hashes to template files
+            const routes = {
+                "home": "template/home.html",
+                "readme": "template/readme.html",
+                "privacy": "template/privacy.html",
+                "contributors": "template/contributors.html",
+                "license": "template/license.html"
+            };
+
+            const navigate = () => {
+                let hash = window.location.hash.replace("#", "").trim();
+                if (!hash || !routes[hash]) {
+                    hash = "home";
+                }
+
+                const targetUrl = routes[hash];
+                
+                // Fade out effect
+                obj.classList.add("fade-out");
+                
+                setTimeout(() => {
+                    obj.setAttribute("data", targetUrl);
+                    updateActiveLink(hash);
+                }, 150);
+            };
+
+            const updateActiveLink = (hash) => {
+                let currentId = "nav-home";
+                if (hash === "privacy") currentId = "nav-privacy";
+                else if (hash === "readme") currentId = "nav-readme";
+                else if (hash === "contributors") currentId = "nav-contributors";
+                else if (hash === "license") currentId = "nav-license";
+
+                document.querySelectorAll(".nav-links .nav-link").forEach(link => {
+                    link.classList.remove("active");
+                });
+
+                const activeLink = document.getElementById(currentId);
+                if (activeLink) {
+                    activeLink.classList.add("active");
+                }
+            };
+
+            // Resize object dynamically to match its inner document scroll height
+            const resizeObject = () => {
+                try {
+                    const innerDoc = obj.contentDocument || obj.contentWindow.document;
+                    if (innerDoc) {
+                        obj.style.height = "auto";
+                        const height = innerDoc.documentElement.scrollHeight || innerDoc.body.scrollHeight;
+                        obj.style.height = (height + 20) + "px"; // added small buffer
+                    }
+                } catch (e) {
+                    console.error("Resize error:", e);
+                }
+            };
+
+            obj.addEventListener("load", () => {
+                // Fade in
+                obj.classList.remove("fade-out");
+                resizeObject();
+
+                // Setup listener on internal link clicks inside the object
+                try {
+                    const innerDoc = obj.contentDocument || obj.contentWindow.document;
+                    if (innerDoc) {
+                        // Monitor size changes inside the loaded document
+                        if (innerDoc.body) {
+                            const observer = new ResizeObserver(() => {
+                                resizeObject();
+                            });
+                            observer.observe(innerDoc.body);
+                        }
+
+                        // Intercept clicks on links inside the object
+                        innerDoc.querySelectorAll("a").forEach(link => {
+                            const href = link.getAttribute("href");
+                            if (href && !href.startsWith("http") && !href.startsWith("//") && !href.startsWith("mailto:") && !href.startsWith("tel:")) {
+                                // If click target is relative to templates
+                                link.addEventListener("click", (e) => {
+                                    e.preventDefault();
+                                    const pageName = href.replace(".html", "").replace("template/", "");
+                                    window.location.hash = pageName;
+                                });
+                            }
+                        });
+                    }
+                } catch (e) {
+                    console.error("Object document access denied:", e);
+                }
+            });
+
+            // Listen for hash changes
+            window.addEventListener("hashchange", navigate);
+
+            // Initial load
+            navigate();
+        });
+    </script>
+</body>
+</html>

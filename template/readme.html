@@ -1,96 +1,116 @@
-<section class="card" id="readme-main-card">
-    <h1 id="readme-main-title">TeleAI — Compassionate AI Companion</h1>
-    
-    <p>
-        <strong>TeleAI</strong> (named <strong>Krysanne</strong>) is an empathetic, always-on AI assistant hosted on Telegram. This companion bot is designed to listen, comfort, and offer a supportive presence for individuals who may feel isolated or distressed. Powered by OpenRouter AI models, TeleAI aims to alleviate loneliness and prevent mental health crises.
-    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background: transparent !important;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            padding: 1rem 0;
+        }
+    </style>
+</head>
+<body>
+    <main class="container">
+        <section class="card" id="readme-main-card">
+            <h1 id="readme-main-title">TeleAI — Compassionate AI Companion</h1>
+            
+            <p>
+                <strong>TeleAI</strong> (named <strong>Krysanne</strong>) is an empathetic, always-on AI assistant hosted on Telegram. This companion bot is designed to listen, comfort, and offer a supportive presence for individuals who may feel isolated or distressed. Powered by OpenRouter AI models, TeleAI aims to alleviate loneliness and prevent mental health crises.
+            </p>
 
-    <img src="/krysanne_banner.jpg" alt="Krysanne - AI Companion Banner" class="hero-banner" id="readme-banner">
+            <img src="krysanne_banner.jpg" alt="Krysanne - AI Companion Banner" class="hero-banner" id="readme-banner">
 
-    <div class="info-box" id="readme-important-disclaimer">
-        <div class="info-box-title">
-            <i class="fa-solid fa-circle-exclamation"></i> Disclaimer
-        </div>
-        <p>
-            TeleAI is meant to lend a supportive ear and offer temporary comfort. It is <strong>not</strong> designed to replace real relationships, physical human touch, or professional mental health counseling.
-        </p>
-        <p style="margin-top: 0.5rem;">
-            <strong>Crisis Support Hotline (Philippines):</strong> If you are experiencing thoughts of self-harm or suicide, please immediately contact <strong>(02) 8804-4673</strong> (Hopeline Philippines; Homepage: <a href="https://findahelpline.com/organizations/hopeline" target="_blank">findahelpline.com/organizations/hopeline</a>) or visit <a href="https://findahelpline.com/countries/ph" target="_blank">findahelpline.com/countries/ph</a> for more local hotlines. Professional help is always available, and you are not alone.
-        </p>
-    </div>
+            <div class="info-box" id="readme-important-disclaimer">
+                <div class="info-box-title">
+                    <i class="fa-solid fa-circle-exclamation"></i> Disclaimer
+                </div>
+                <p>
+                    TeleAI is meant to lend a supportive ear and offer temporary comfort. It is <strong>not</strong> designed to replace real relationships, physical human touch, or professional mental health counseling.
+                </p>
+                <p style="margin-top: 0.5rem;">
+                    <strong>Crisis Support Hotline (Philippines):</strong> If you are experiencing thoughts of self-harm or suicide, please immediately contact <strong>(02) 8804-4673</strong> (Hopeline Philippines; Homepage: <a href="https://findahelpline.com/organizations/hopeline" target="_blank">findahelpline.com/organizations/hopeline</a>) or visit <a href="https://findahelpline.com/countries/ph" target="_blank">findahelpline.com/countries/ph</a> for more local hotlines. Professional help is always available, and you are not alone.
+                </p>
+            </div>
 
-    <h2 id="readme-features-title">🌟 Key Features</h2>
-    <ul>
-        <li><strong>Empathetic Listening:</strong> Engineered to provide supportive, non-judgmental conversational outlets.</li>
-        <li><strong>Continuous Chat Memory:</strong> Retains conversational context securely per <code>chat.id</code> in a temporary local data store of the platform (which resets when the server is restarted).</li>
-        <li><strong>JSON-Driven Action Routing:</strong> Automatically parses structured AI responses to execute modular scripts in real time.</li>
-        <li><strong>Extensible Commands:</strong> Includes <code>clear-chat</code>, <code>verse</code> (Bible Gateway scraping), <code>guitar</code> (Ultimate Guitar song search), and <code>imgen</code> (Lumenfall AI image generation).</li>
-        <li><strong>Flexible Setup:</strong> Supports production-ready Webhooks (Express) and local development Long Polling.</li>
-    </ul>
+            <h2 id="readme-features-title">🌟 Key Features</h2>
+            <ul>
+                <li><strong>Empathetic Listening:</strong> Engineered to provide supportive, non-judgmental conversational outlets.</li>
+                <li><strong>Continuous Chat Memory:</strong> Retains conversational context securely per <code>chat.id</code> in a temporary local data store of the platform (which resets when the server is restarted).</li>
+                <li><strong>JSON-Driven Action Routing:</strong> Automatically parses structured AI responses to execute modular scripts in real time.</li>
+                <li><strong>Extensible Commands:</strong> Includes <code>clear-chat</code>, <code>verse</code> (Bible Gateway scraping), <code>guitar</code> (Ultimate Guitar song search), and <code>imgen</code> (Lumenfall AI image generation).</li>
+                <li><strong>Flexible Setup:</strong> Supports production-ready Webhooks (Express) and local development Long Polling.</li>
+            </ul>
 
-    <h2 id="readme-stack-title">🛠️ Technology Stack</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Technology</th>
-                <th>Role</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>TypeScript</strong></td>
-                <td>Strict typing for enterprise reliability and self-documenting code.</td>
-            </tr>
-            <tr>
-                <td><strong>Node.js & TSX</strong></td>
-                <td>Runtime and direct high-performance execution of TypeScript.</td>
-            </tr>
-            <tr>
-                <td><strong>Express 5</strong></td>
-                <td>Minimalist web framework serving webhooks and client pages.</td>
-            </tr>
-            <tr>
-                <td><strong>node-telegram-bot-api</strong></td>
-                <td>Wrapper library interacting with the Telegram Bot API.</td>
-            </tr>
-            <tr>
-                <td><strong>Axios</strong></td>
-                <td>Client for communicating with the OpenRouter AI endpoints.</td>
-            </tr>
-        </tbody>
-    </table>
+            <h2 id="readme-stack-title">🛠️ Technology Stack</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>TypeScript</strong></td>
+                        <td>Strict typing for enterprise reliability and self-documenting code.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Node.js & TSX</strong></td>
+                        <td>Runtime and direct high-performance execution of TypeScript.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Express 5</strong></td>
+                        <td>Minimalist web framework serving webhooks and client pages.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>node-telegram-bot-api</strong></td>
+                        <td>Wrapper library interacting with the Telegram Bot API.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Axios</strong></td>
+                        <td>Client for communicating with the OpenRouter AI endpoints.</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <h2 id="readme-routing-title">🤖 JSON-Driven Command Routing</h2>
-    <p>
-        Every message from Krysanne is structured as a JSON block, which allows the bot's core loop to run custom backend functions when needed:
-    </p>
-<pre><code>{
+            <h2 id="readme-routing-title">🤖 JSON-Driven Command Routing</h2>
+            <p>
+                Every message from Krysanne is structured as a JSON block, which allows the bot's core loop to run custom backend functions when needed:
+            </p>
+        <pre><code>{
   "message": "A human-readable explanation or chat response.",
   "command": "clear-chat | verse | guitar | imgen | new-thread | (empty)",
   "parameter": "Arguments or search query for the command",
   "title": "Optional topic title (e.g., for creating or renaming forum topics)"
 }</code></pre>
 
-    <h2 id="readme-start-title">🚀 Quick Start</h2>
-    
-    <h3>1. Prerequisites</h3>
-    <ul>
-        <li>Node.js (v18+ recommended) and npm.</li>
-        <li>A Telegram Bot Token from <a href="https://t.me/BotFather" target="_blank">@BotFather</a>.</li>
-        <li>An OpenRouter API Key and (optionally) Lumenfall AI key.</li>
-    </ul>
+            <h2 id="readme-start-title">🚀 Quick Start</h2>
+            
+            <h3>1. Prerequisites</h3>
+            <ul>
+                <li>Node.js (v18+ recommended) and npm.</li>
+                <li>A Telegram Bot Token from <a href="https://t.me/BotFather" target="_blank">@BotFather</a>.</li>
+                <li>An OpenRouter API Key and (optionally) Lumenfall AI key.</li>
+            </ul>
 
-    <h3>2. Installation</h3>
-<pre><code># Clone the repository
+            <h3>2. Installation</h3>
+        <pre><code># Clone the repository
 git clone https://github.com/RyannKim327/Tele-AI
 cd TeleAI
 
 # Install dependencies
 npm install</code></pre>
 
-    <h3>3. Environment Setup</h3>
-    <p>Create a <code>.env</code> file in the root directory:</p>
-<pre><code>TELEGRAM_TOKEN=your_telegram_bot_token
+            <h3>3. Environment Setup</h3>
+            <p>Create a <code>.env</code> file in the root directory:</p>
+        <pre><code>TELEGRAM_TOKEN=your_telegram_bot_token
 AI_TOKEN=your_openrouter_api_key
 BOT_CODE=your_bot_secret_code
 LUMENFALL_API=your_lumenfall_api_key
@@ -99,12 +119,12 @@ LUMENFALL_API=your_lumenfall_api_key
 # WEBHOOK_URL=https://your-domain.com
 # PORT=3000</code></pre>
 
-    <h3>4. Running</h3>
-<pre><code># Run in development/production mode
+            <h3>4. Running</h3>
+        <pre><code># Run in development/production mode
 npm start</code></pre>
 
-    <h2 id="readme-structure-title">📂 Project Structure</h2>
-<pre><code>TeleAI/
+            <h2 id="readme-structure-title">📂 Project Structure</h2>
+        <pre><code>TeleAI/
 ├── data/               # Local JSON database files (git-ignored)
 ├── template/           # Web dashboard templates and assets
 ├── src/
@@ -116,4 +136,7 @@ npm start</code></pre>
 │   ├── script/         # Extensible custom command functions
 │   └── utils/          # Console styling and parsing utilities
 └── package.json        # Manifest file</code></pre>
-</section>
+        </section>
+    </main>
+</body>
+</html>

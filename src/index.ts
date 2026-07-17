@@ -32,51 +32,19 @@ function main() {
     const app: Express = express()
     app.use(express.json())
 
-    // Serving styles, images and pages
-    app.get("/style.css", (req: Request, res: Response) => {
-      res.sendFile(path.join(process.cwd(), "template", "style.css"))
-    })
+    // Serve static files from the template directory under the /template path
+    app.use("/template", express.static(path.join(process.cwd(), "template")))
 
-    app.get("/krysanne_banner.jpg", (req: Request, res: Response) => {
-      res.sendFile(path.join(process.cwd(), "template", "krysanne_banner.jpg"))
-    })
-
-    const renderPage = (pageName: string, res: Response) => {
-      try {
-        const layoutPath = path.join(process.cwd(), "template", "index.html")
-        const contentPath = path.join(process.cwd(), "template", `${pageName}.html`)
-        if (!fs.existsSync(layoutPath) || !fs.existsSync(contentPath)) {
-          return res.status(404).send("Page not found")
-        }
-        let layout = fs.readFileSync(layoutPath, "utf-8")
-        const content = fs.readFileSync(contentPath, "utf-8")
-        layout = layout.replace("{{CONTENT}}", content)
-        res.setHeader("Content-Type", "text/html")
-        res.send(layout)
-      } catch (err: any) {
-        res.status(500).send("Internal Server Error")
-      }
+    // Route mappings for clean URLs in the SPA (all serve the root index.html)
+    const sendIndex = (req: Request, res: Response) => {
+      res.sendFile(path.join(process.cwd(), "index.html"))
     }
 
-    app.get("/", (req: Request, res: Response) => {
-      renderPage("home", res)
-    })
-
-    app.get("/privacy", (req: Request, res: Response) => {
-      renderPage("privacy", res)
-    })
-
-    app.get("/readme", (req: Request, res: Response) => {
-      renderPage("readme", res)
-    })
-
-    app.get("/contributors", (req: Request, res: Response) => {
-      renderPage("contributors", res)
-    })
-
-    app.get("/license", (req: Request, res: Response) => {
-      renderPage("license", res)
-    })
+    app.get("/", sendIndex)
+    app.get("/privacy", sendIndex)
+    app.get("/readme", sendIndex)
+    app.get("/contributors", sendIndex)
+    app.get("/license", sendIndex)
 
     let api: TelegramBot | null = null
 
