@@ -22,7 +22,7 @@ function main() {
     `
         ╭―――――――――――――――――――――――――――――――――――――――――╮
         │                                         │
-        │      Welcome to Telegram Music Bot      │
+        │           Welcome to Krysanne           │
         │     Developed by Ryann Kim Sesgundo     │
         │                                         │
         ╰―――――――――――――――――――――――――――――――――――――――――╯`,

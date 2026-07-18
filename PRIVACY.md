@@ -2,7 +2,7 @@
 
 **Last Updated:** July 16, 2026
 
-Welcome to **TeleAI** (Krysanne), an empathetic AI Telegram companion designed to offer listening, conversation, and supportive presence. Your privacy and trust are of utmost importance, especially given our mission to provide comfort, combat loneliness, and offer a safe space for expression.
+Welcome to **Krysanne**, an empathetic AI Telegram companion designed to offer listening, conversation, and supportive presence. Your privacy and trust are of utmost importance, especially given our mission to provide comfort, combat loneliness, and offer a safe space for expression.
 
 Please read this Privacy Policy carefully to understand how your data is handled.
 
@@ -10,7 +10,7 @@ Please read this Privacy Policy carefully to understand how your data is handled
 
 ## 📞 1. Mental Health & Support Disclaimer
 
-**TeleAI (Krysanne) is an AI companion chatbot. It is NOT a licensed medical, mental health, or psychiatric professional service.** 
+**Krysanne is an AI companion chatbot. It is NOT a licensed medical, mental health, or psychiatric professional service.** 
 
 *   **Not a Replacement for Professional Help:** Krysanne cannot diagnose, treat, or prevent mental health conditions, and cannot provide clinical crisis intervention.
 *   **Emergency Contact:** If you are experiencing a severe mental health crisis, self-harm thoughts, or suicidal thoughts, please reach out immediately to professional hotlines, emergency services, or local crisis centers:
@@ -24,13 +24,13 @@ Please read this Privacy Policy carefully to understand how your data is handled
 
 ## 🔒 2. Information We Collect
 
-To provide a context-aware and fluid conversation, TeleAI collects and holds conversational information. **The data gathered is used strictly for continuous communication.** The data is not stored in any external platform, and resides only within the local data store of the hosting platform, which completely resets when the server is restarted.
+To provide a context-aware and fluid conversation, Krysanne collects and holds conversational information. **The data gathered is used strictly for continuous communication.** The data is not stored in any external platform, and resides only within the local data store of the hosting platform, which completely resets when the server is restarted.
 
 We collect:
 1.  **Telegram Identifiers:** Your Telegram `chat.id`, `user.id`, and thread identifier (if using group topics) to associate conversation history with your current chat session.
 2.  **Conversational History:** The text of messages you send to Krysanne, along with the assistant's replies.
 
-*No other personal data (such as your real name, phone number, location, or payment details) is requested, processed, or stored by TeleAI.*
+*No other personal data (such as your real name, phone number, location, or payment details) is requested, processed, or stored by Krysanne.*
 
 ---
 
@@ -54,7 +54,7 @@ Your data is processed and used strictly for the following purposes:
 
 ## 🏢 5. Third-Party Services
 
-We utilize the following third-party integrations to run TeleAI:
+We utilize the following third-party integrations to run Krysanne:
 1.  **Telegram Bot API:** Transports messages between your device and our server. Subject to [Telegram's Privacy Policy](https://telegram.org/privacy).
 2.  **OpenRouter AI:** Processes conversation content to generate the AI responses. Subject to [OpenRouter's Privacy Policy](https://openrouter.ai/privacy).
 3.  **Command API Helpers:** Specific commands retrieve external public resources (such as guitar chords from Ultimate Guitar or Bible verses from Bible Gateway). No personal identifiers or chat history are sent to these services.
@@ -69,9 +69,9 @@ We may update this Privacy Policy to reflect changes in our bot features, hostin
 
 ## 📬 7. Contact & Licensing
 
-TeleAI is open-source software distributed under the [Educational Community License, Version 2.0 (ECL-2.0)](LICENSE.md).
+Krysanne is open-source software distributed under the [Educational Community License, Version 2.0 (ECL-2.0)](LICENSE.md).
 
 For questions or feedback regarding this policy or the application:
 *   **Copyright Owner:** Master Piece of Paper (formerly MPOP Reverse II)
 *   **Primary Author:** Ryann Kim M. Sesgundo
-*   **GitHub Repository:** [RyannKim327/Tele-AI](https://github.com/RyannKim327/Tele-AI)
+*   **GitHub Repository:** [RyannKim327/krysanne](https://github.com/RyannKim327/krysanne)

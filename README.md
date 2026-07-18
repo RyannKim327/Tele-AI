@@ -1,19 +1,19 @@
-# TeleAI — Compassionate AI Telegram Companion (Krysanne)
+# Krysanne — Compassionate AI Telegram Companion
 
 [![License: ECL-2.0](https://img.shields.io/badge/License-ECL--2.0-blue.svg)](https://opensource.org/licenses/ECL-2.0)
 [![Platform: Node.js](https://img.shields.io/badge/Platform-Node.js-green.svg)](https://nodejs.org/)
 [![Language: TypeScript](https://img.shields.io/badge/Language-TypeScript-blue.svg)](https://www.typescriptlang.org/)
-[![wakatime](https://wakatime.com/badge/github/RyannKim327/Tele-AI.svg)](https://wakatime.com/badge/github/RyannKim327/Tele-AI)
+[![wakatime](https://wakatime.com/badge/github/RyannKim327/krysanne.svg)](https://wakatime.com/badge/github/RyannKim327/krysanne)
 
-![TeleAI Banner](template/krysanne_banner.jpg)
+![Krysanne Banner](template/krysanne_banner.jpg)
 
 > **"What I aim is to give people a friend, to prevent suicide cases. To call someone who listen to them."**
-> — *TeleAI Mission Statement*
+> — *Krysanne Mission Statement*
 
-**TeleAI** is an empathetic, always-on AI assistant hosted on Telegram. Named **Krysanne**, this chatbot acts as a companion designed to listen, converse, and offer a supportive presence for individuals who may feel isolated, distressed, or simply need a safe space to share their thoughts. Powered by **OpenRouter AI** models, TeleAI aims to provide comfort and human-like warmth to prevent loneliness and mental health crises.
+**Krysanne** is an empathetic, always-on AI assistant hosted on Telegram. This chatbot acts as a companion designed to listen, converse, and offer a supportive presence for individuals who may feel isolated, distressed, or simply need a safe space to share their thoughts. Powered by **OpenRouter AI** models, Krysanne aims to provide comfort and human-like warmth to prevent loneliness and mental health crises.
 
 > [!IMPORTANT]
-> **Disclaimer:** TeleAI (Krysanne) is an AI companion meant to lend a supportive ear and offer temporary comfort. It is **not** designed to replace physical human touch, real relationships, or professional help/counseling for emotional distress and mental health problems.
+> **Disclaimer:** Krysanne is an AI companion meant to lend a supportive ear and offer temporary comfort. It is **not** designed to replace physical human touch, real relationships, or professional help/counseling for emotional distress and mental health problems.
 > 
 > **Crisis Support Hotline (Philippines):** If you are experiencing thoughts of self-harm or suicide, please immediately contact **(02) 8804-4673** (Hopeline Philippines; Homepage: [findahelpline.com/organizations/hopeline](https://findahelpline.com/organizations/hopeline)) or visit [findahelpline.com/countries/ph](https://findahelpline.com/countries/ph) for more hotlines. If you are in the US or Canada, call or text **988**. Professional help is always available, and you are not alone.
 
@@ -83,8 +83,8 @@ You will also need:
 Clone this repository and navigate into the project directory:
 
 ```bash
-git clone https://github.com/RyannKim327/Tele-AI
-cd TeleAI
+git clone https://github.com/RyannKim327/krysanne
+cd krysanne
 ```
 
 Install the dependencies:
@@ -134,7 +134,7 @@ If `WEBHOOK_URL` is omitted, the bot will fall back automatically to **long poll
 ## 📂 Project Structure
 
 ```
-TeleAI/
+krysanne/
 ├── data/               # Persistent conversational datasets (git-ignored)
 ├── src/
 │   ├── index.ts        # Bot initialization & polling/webhook routing
@@ -160,7 +160,7 @@ TeleAI/
 
 ## 🔒 Privacy & Safety
 
-We take user privacy and emotional safety seriously. TeleAI (Krysanne) is not a substitute for professional mental health support or physical human connection, but rather an AI companion to provide a temporary, listening hand during difficult moments. 
+We take user privacy and emotional safety seriously. Krysanne is not a substitute for professional mental health support or physical human connection, but rather an AI companion to provide a temporary, listening hand during difficult moments. 
 
 *   **Crisis Hotline:** If you are experiencing thoughts of self-harm or suicide, please call **(02) 8804-4673** (Hopeline Philippines; Homepage: [findahelpline.com/organizations/hopeline](https://findahelpline.com/organizations/hopeline)) or visit [findahelpline.com/countries/ph](https://findahelpline.com/countries/ph) for local hotlines.
 *   **Privacy & Data Storage:** Conversational data is used strictly for continuous communication and is only kept in the local data store of the platform, which completely resets when the server is restarted.
@@ -169,12 +169,18 @@ For full details on data handling and mental health crisis disclaimers, please r
 
 ---
 
-## 🛡️ License
+## 🛡️ License & Name Policy
 
 This project is licensed under the **Educational Community License, Version 2.0 (ECL-2.0)**. See the [LICENSE.md](LICENSE.md) file for more information.
+
+### 🌸 Krysanne Name Use Policy
+Use of the name **Krysanne** is restricted:
+1. **Association:** Must only be used in projects officially related to `Master Piece of Paper`, as it is a name deeply personal to the author/creator of this project (Ryann Kim M. Sesgundo).
+2. **Prohibited Activities:** Must not be used in any kind of illegal activities, violence, nudity, or anything related to such activities.
+3. **Core Purpose:** Must strictly pertain to promoting peace, love, and offering support to anyone who is in need.
 
 ---
 
 ## ❤️ Contributing
 
-We welcome contributions of all kinds to make **TeleAI** more supportive, secure, and accessible. Please see [CONTRIBUTORS.md](CONTRIBUTORS.md) for contribution guidelines and to meet our team.
+We welcome contributions of all kinds to make **Krysanne** more supportive, secure, and accessible. Please see [CONTRIBUTORS.md](CONTRIBUTORS.md) for contribution guidelines and to meet our team.

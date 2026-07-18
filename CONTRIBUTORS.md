@@ -1,6 +1,6 @@
 # Project Contributors
 
-Thank you for your interest in contributing to **TeleAI**! This project is driven by a profound mission: **to provide a friend, alleviate isolation, and help prevent mental health crises.** Your contributions play a vital role in realizing this vision.
+Thank you for your interest in contributing to **Krysanne**! This project is driven by a profound mission: **to provide a friend, alleviate isolation, and help prevent mental health crises.** Your contributions play a vital role in realizing this vision.
 
 ---
 
@@ -8,7 +8,7 @@ Thank you for your interest in contributing to **TeleAI**! This project is drive
 
 *   **Ryann Kim M. Sesgundo** (Master Piece of Paper, formerly *MPOP Reverse II*)
     *   *Role:* Core Creator, Lead Architect, and Maintainer.
-    *   *GitHub:* [Tele-AI](https://github.com/RyannKim327/Tele-AI)
+    *   *GitHub:* [krysanne](https://github.com/RyannKim327/krysanne)
 
 ---
 
@@ -20,7 +20,7 @@ We welcome and encourage community contributions, whether you're fixing bugs, ad
 
 To ensure a high-quality codebase and a respectful community:
 
-1.  **Keep it Compassionate:** TeleAI is built to support people in need. All changes to prompts (`src/prompt.md`) and conversational flows must maintain a warm, safe, supportive, and non-judgmental tone.
+1.  **Keep it Compassionate:** Krysanne is built to support people in need. All changes to prompts (`src/prompt.md`) and conversational flows must maintain a warm, safe, supportive, and non-judgmental tone.
 2.  **Safety First:** Ensure that no user data, private chats, API keys, or credentials are ever logged, cached insecurely, or exposed to external servers except through the secure OpenRouter API endpoint.
 3.  **Strict Typing:** The codebase is written in TypeScript. Avoid using the `any` keyword or bypassing TypeScript compilation warnings.
 4.  **Modular Design:** Follow the existing project architecture (routing events through `core.ts`, creating modular scripts in `src/script/`, and parsing markdown commands with utility functions).
