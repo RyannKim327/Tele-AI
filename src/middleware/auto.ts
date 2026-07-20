@@ -88,7 +88,7 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
   } catch (e) { }
 
   // INFO: I let this log for debugging purposes
-  // console.log(extract)
+  // console.log(event)
 
   // TODO: Auto add script method
   if (existsSync(`src/script/${extract.command}.ts`)) {

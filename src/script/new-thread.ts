@@ -5,7 +5,7 @@ export default async function script(api: TelegramBot, event: EventInterface, bo
   const nt = await api.createForumTopic(event.chat.id, body.title ?? "New Thread")
 
   api.sendMessage(event.chat.id, body.message, {
-    message_thread_id: nt.message_thread_id
+    message_thread_id: nt.message_thread_id,
   })
 
   api.sendMessage(event.chat.id, body.message, {
