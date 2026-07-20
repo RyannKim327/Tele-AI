@@ -15,7 +15,7 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
     user += `_${event.reply_to_message?.message_thread_id}`
   }
 
-  const store = await gist("chats.json")
+  const store = await gist("chats.x")
   const admins = await gist("admins.json")
 
   const messages = [
@@ -79,7 +79,7 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
 
   store[user] = messages
 
-  gist("chats.json", store)
+  gist("chats.x", store)
 
   try {
     await api.sendChatAction(event.chat.id, "typing", {
