@@ -38,7 +38,7 @@ We collect:
 
 Your data is processed and used strictly for the following purposes:
 *   **Conversational Continuity (Context):** Storing previous messages in the secure GitHub Secret Gist allows Krysanne to remember what was said earlier, facilitating natural, continuous, and supportive dialogue.
-*   **AI Inference:** Messages are sent securely to the **OpenRouter AI** API (default model: `nvidia/nemotron-3-ultra-550b-a55b:free` or equivalent) to generate empathetic responses, but are not stored or retained permanently on any other external platform.
+*   **AI Inference:** Messages are sent securely to the **OpenRouter AI** API (default model: `openai/gpt-oss-20b` or equivalent) to generate empathetic responses, but are not stored or retained permanently on any other external platform.
 
 ---
 

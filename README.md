@@ -33,7 +33,7 @@
     *   `new-thread`: Creates and manages new Telegram forum topics dynamically.
     *   `weather`: Fetches real-time weather reports for a given city or location via wttr.in.
 *   **Flexible Setup:** Supports both production-ready **Webhooks** (using Express) and rapid-development **Long Polling**.
-*   **OpenRouter Integration:** Leverages any free or premium LLMs available through OpenRouter (defaults to `nvidia/nemotron-3-ultra-550b-a55b:free`).
+*   **OpenRouter Integration:** Leverages any free or premium LLMs available through OpenRouter (defaults to `openai/gpt-oss-20b`).
 
 ---
 

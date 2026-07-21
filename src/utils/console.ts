@@ -1,4 +1,4 @@
-export default function log(from: string, msg: string, status = "i") {
+export default function log(from: string, msg: string, status: string = "i") {
   let color = 36;
 
   status = status[0].toLowerCase();

@@ -5,6 +5,7 @@ import { existsSync, readFileSync } from "fs";
 import TelegramBot from "node-telegram-bot-api";
 import { aiResponse, EventInterface } from "@/interface";
 import gist from "@/utils/gist";
+import log from "@/utils/console";
 
 dotenv.config()
 
@@ -48,23 +49,32 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
     content: body
   })
 
-  const { data } = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
-    "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-    "messages": messages,
-    "stream": false
-  }, {
-    headers: {
-      "Authorization": `Bearer ${process.env.AI_TOKEN}`,
-      "Content-Type": "application/json"
-    }
-  });
+  let data = null
 
-  const extract: aiResponse = mdExtractor(data.choices[0].message.content as string) as aiResponse
+  while (data === null) {
+    try {
+      const response = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
+        "model": "openai/gpt-oss-20b:free",
+        "messages": messages,
+        "stream": false
+      }, {
+        headers: {
+          "Authorization": `Bearer ${process.env.AI_TOKEN}`,
+          "Content-Type": "application/json"
+        }
+      });
+      data = response.data.choices[0].message.content
+    } catch (e: unknown) {
+      log("AI Response", e?.toString() ?? "Error", "e")
+    }
+  }
+
+  const extract: aiResponse = mdExtractor(data as string) as aiResponse
 
   if (!extract.error) {
     messages.push({
       "role": "assistant",
-      "content": data.choices[0].message.content
+      "content": data
     })
   }
 
@@ -99,12 +109,13 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
     api.sendMessage(event.chat.id, extract.message, {
       message_thread_id: event.reply_to_message?.message_thread_id
     })
-  }
 
-  if (extract.title && extract.command !== "new-thread") {
-    api.editForumTopic(event.chat.id, event.reply_to_message?.message_thread_id ?? 0, {
-      name: extract.title
-    })
+    // TODO: Thread Rename
+    if (extract.title) {
+      api.editForumTopic(event.chat.id, event.reply_to_message?.message_thread_id ?? 0, {
+        name: extract.title
+      })
+    }
   }
 }
 
