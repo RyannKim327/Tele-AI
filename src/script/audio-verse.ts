@@ -6,7 +6,7 @@
  */
 
 import { aiResponse, EventInterface } from "@/interface";
-import { audio, audio_version, verse, version } from "biblegateway-scrape";
+import { audio, audio_version } from "biblegateway-scrape";
 import TelegramBot from "node-telegram-bot-api";
 
 export default async function script(api: TelegramBot, event: EventInterface, body: aiResponse) {

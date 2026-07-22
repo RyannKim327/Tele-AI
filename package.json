@@ -22,7 +22,8 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "json-enc-dec": "^0.1.2",
+    "node-cron": "^4.6.0",
     "node-telegram-bot-api": "^1.1.2",
-    "ultimate-guitar": "^4.0.1"
+    "ultimate-guitar": "^2.0.6"
   }
 }
