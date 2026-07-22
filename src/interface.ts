@@ -1,4 +1,4 @@
-import { EventMetadata, Message } from "node-telegram-bot-api"
+import { EditMessageCaptionParams, EditMessageTextParams, EventMetadata, Message } from "node-telegram-bot-api"
 
 export type jsonInterface = Record<string, unknown>
 
@@ -12,4 +12,13 @@ export interface aiResponse {
 
 export interface EventInterface extends Message {
   metadata: EventMetadata
+}
+
+export interface EditInterface extends EditMessageTextParams, EditMessageCaptionParams { }
+
+export interface ScriptInterface {
+  text?: string,
+  audio?: string,
+  image?: string,
+  video?: string
 }

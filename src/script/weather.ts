@@ -1,3 +1,11 @@
+/*
+ * INFO: Weather.ts
+ * This script serve as the weather update especially that
+ * we, the head developer, is in a tropical country.
+ * This will help us to update the current temperature
+ * whether it is hot or not.
+ */
+
 import { aiResponse } from "@/interface";
 import axios from "axios";
 import TelegramBot, { Message } from "node-telegram-bot-api";
@@ -10,8 +18,9 @@ export default async function script(api: TelegramBot, event: Message, body: aiR
 
   const { data } = await axios.get(`https://wttr.in/${body.parameter}?format=4`)
 
-  api.editMessageText(`The weather in ${data}`, {
-    message_id: msg.message_id,
-    chat_id: msg.chat.id
-  })
+  api.deleteMessage(msg.chat.id, msg.message_id)
+
+  return {
+    text: `The weather in ${data}`
+  }
 }

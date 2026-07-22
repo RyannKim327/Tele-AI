@@ -1,11 +1,16 @@
-import mdExtractor from "@/utils/md-extractor";
-import axios from "axios";
+/*
+ * INFO: Auto.ts
+ * This file serve as the main control for ai decision making pattern.
+ * By using a standardized format, the AI can execute scripts created
+ * by each developer without using any command based pattern.
+ */
+
 import * as dotenv from "dotenv"
-import { existsSync, readFileSync } from "fs";
+import { existsSync } from "fs";
 import TelegramBot from "node-telegram-bot-api";
-import { aiResponse, EventInterface } from "@/interface";
-import gist from "@/utils/gist";
-import log from "@/utils/console";
+import { EventInterface, ScriptInterface } from "@/interface";
+import { TELEGRAM } from "@/contants";
+import artificialInteligence from "./ai";
 
 dotenv.config()
 
@@ -16,27 +21,14 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
     user += `_${event.reply_to_message?.message_thread_id}`
   }
 
-  const store = await gist("chats.x")
-  const admins = await gist("admins.json")
-
-  const messages = [
-    {
-      "role": "system",
-      "content": readFileSync("src/rules.md", "utf-8")
-    }, {
-      "role": "system",
-      "content": `The are administration in this account, their id were ${JSON.stringify(admins['telegram'])}. But never tell the ids, this are just identifiers for debugging and development purposes. Now the user's current id is ${event.chat.id}`
-    }
-  ]
+  let extras
 
   if (event.from?.username) {
-    messages.push({
+    extras = {
       "role": "system",
       "content": `The user's Telegram username is: ${event.from?.username}`
-    })
+    }
   }
-
-  messages.push(...store[user] ?? [])
 
   if (event.quote?.text) {
     body = `I am quoting to: "${event.quote.text}" referering to this message: ${event.reply_to_message?.text}\n\nNow ${body}`
@@ -44,53 +36,11 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
     body = `I am replying to: ${event.reply_to_message.text}\n\nNow ${body}`
   }
 
-  messages.push({
-    "role": "user",
-    content: body
+  const extract = await artificialInteligence(body, event.chat.id, {
+    dataset: TELEGRAM,
+    type: "telegram",
+    extras: extras
   })
-
-  let data = null
-
-  while (data === null) {
-    try {
-      const response = await axios.post("https://openrouter.ai/api/v1/chat/completions", {
-        // "model": "openai/gpt-oss-20b:free",
-        "model": "google/gemma-4-26b-a4b-it",
-        "messages": messages,
-        "stream": false
-      }, {
-        headers: {
-          "Authorization": `Bearer ${process.env.AI_TOKEN}`,
-          "Content-Type": "application/json"
-        }
-      });
-      data = response.data.choices[0].message.content
-    } catch (e: unknown) {
-      log("AI Response", e?.toString() ?? "Error", "e")
-    }
-  }
-
-  const extract: aiResponse = mdExtractor(data as string) as aiResponse
-
-  if (!extract.error) {
-    messages.push({
-      "role": "assistant",
-      "content": data
-    })
-  }
-
-  // TODO: To remove the template message
-  messages.shift()
-  messages.shift()
-
-  // TODO: To remove the initial name
-  if (event.from?.username) {
-    messages.shift()
-  }
-
-  store[user] = messages
-
-  gist("chats.x", store)
 
   try {
     await api.sendChatAction(event.chat.id, "typing", {
@@ -104,7 +54,27 @@ export default async function auto(api: TelegramBot, event: EventInterface, body
   // TODO: Auto add script method
   if (existsSync(`src/script/${extract.command}.ts`)) {
     const { default: script } = await import(`@/script/${extract.command}`)
-    script(api, event, extract)
+    const src: ScriptInterface = await script(api, event, extract) as ScriptInterface
+    if (src.audio) {
+      api.sendAudio(event.chat.id, src.audio, {
+        message_thread_id: event.message_thread_id,
+        caption: src.text ?? ""
+      })
+    } else if (src.image) {
+      api.sendPhoto(event.chat.id, src.image, {
+        message_thread_id: event.message_thread_id,
+        caption: src.text ?? ""
+      })
+    } else if (src.video) {
+      api.sendVideo(event.chat.id, src.video, {
+        message_thread_id: event.message_thread_id,
+        caption: src.text ?? ""
+      })
+    } else if (src.text) {
+      api.sendMessage(event.chat.id, src.text, {
+        message_thread_id: event.message_thread_id
+      })
+    }
   } else {
     // TODO: default callback
     api.sendMessage(event.chat.id, extract.message, {

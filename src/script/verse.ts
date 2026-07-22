@@ -1,3 +1,10 @@
+/*
+ * INFO: Verse.ts
+ * This file will serve as the bible verse generator
+ * This will execute whether the user ask for it
+ * or the AI recognized that user needs it.
+ */
+
 import { aiResponse, EventInterface } from "@/interface";
 import { verse } from "biblegateway-scrape";
 import TelegramBot from "node-telegram-bot-api";
@@ -5,10 +12,7 @@ import TelegramBot from "node-telegram-bot-api";
 export default async function script(api: TelegramBot, event: EventInterface, body: aiResponse) {
   const response = await verse(body.parameter)
 
-  api.sendMessage(
-    event.chat.id,
-    `${body.message}\n\n${response.book}\n${response.verses}`,
-    {
-      message_thread_id: event.reply_to_message?.message_thread_id
-    })
+  return {
+    text: `${body.message}\n\n${response.book}\n${response.verses}`,
+  }
 }

@@ -1,8 +1,7 @@
-import TelegramBot, { EventMetadata } from "node-telegram-bot-api";
+import TelegramBot from "node-telegram-bot-api";
 import * as dotenv from "dotenv"
 import log from "./utils/console";
 import express, { Express, Request, Response } from "express"
-import { EventInterface } from "./interface";
 import path from "path";
 import APIProcess from "./middleware/api-process";
 

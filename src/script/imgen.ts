@@ -1,3 +1,10 @@
+/*
+ * INFO: Imgen.ts
+ * This script serves as the image generator, since the AI uses the
+ * text generator only, we need to use a 3rd party image generator for
+ * this feature.
+ */
+
 import * as dotenv from "dotenv"
 import { aiResponse, EventInterface } from "@/interface";
 import axios from "axios";
@@ -23,8 +30,8 @@ export default async function script(api: TelegramBot, event: EventInterface, bo
     }
   })
 
-  api.sendPhoto(event.chat.id, data.data[0].url, {
-    message_thread_id: event.reply_to_message?.message_thread_id
-  })
+  return {
+    image: data.data[0].url
+  }
 }
 

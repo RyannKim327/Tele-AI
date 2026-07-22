@@ -1,3 +1,12 @@
+/*
+ * INFO: Gist.ts
+ * The main purpose of this file is to make a file access to
+ * store information gathered form user to use as continuous
+ * conversation. The script will automatically encrypt the data
+ * based on the key given by the developer. The purpose is to
+ * remain the privacy and protect the data of the user.
+ */
+
 import * as dotenv from "dotenv"
 import axios from "axios";
 import { jsonInterface } from "@/interface";

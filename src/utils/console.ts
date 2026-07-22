@@ -1,3 +1,10 @@
+/*
+ * INFO: Console.ts
+ * This file served as a templated form of logs with status character.
+ * This will help developer to monitor the logs by adding TAGS and
+ * colorized by using the status
+ */
+
 export default function log(from: string, msg: string, status: string = "i") {
   let color = 36;
 

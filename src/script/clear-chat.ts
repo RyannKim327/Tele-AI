@@ -1,7 +1,14 @@
+/*
+ * INFO: Clear-Chat.ts
+ * This script is one of the feature of the AI, where it can be
+ * automatically execute by asking to clear the chat. The purpose
+ * of this is to maintain the user's privacy by letting user
+ * to ask the AI to clear the messages for them.
+ */
+
+import { TELEGRAM } from "@/contants";
 import { aiResponse, EventInterface } from "@/interface";
 import gist from "@/utils/gist";
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
-import { decrypt, encrypt } from "json-enc-dec";
 import TelegramBot from "node-telegram-bot-api";
 
 export default async function script(api: TelegramBot, event: EventInterface, body: aiResponse) {
@@ -13,9 +20,9 @@ export default async function script(api: TelegramBot, event: EventInterface, bo
     user += `_${event.reply_to_message?.message_thread_id}`
   }
 
-  const store = await gist("chats.x")
+  const store = await gist(TELEGRAM)
   delete store[user]
-  gist("chats.x", store)
+  gist(TELEGRAM, store)
 
   api.deleteForumTopic(event.chat.id, event.message_thread_id as number)
 
@@ -27,5 +34,7 @@ export default async function script(api: TelegramBot, event: EventInterface, bo
   setTimeout(() => {
     api.deleteMessage(message.chat.id, message.message_id)
   }, 5000)
+
+  return {}
 }
 

@@ -1,3 +1,10 @@
+/*
+ * INFO: Core.ts
+ * The main access from the telegram bot to the ai and api itself.
+ * This must sanitize and format the main structure for each function
+ * for a templated format of program and scripts to create.
+ */
+
 import TelegramBot from "node-telegram-bot-api";
 import auto from "@/middleware/auto";
 import { EventInterface } from "../interface";
