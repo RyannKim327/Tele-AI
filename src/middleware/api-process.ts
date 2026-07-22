@@ -2,14 +2,18 @@
  * INFO: API-Process.ts
  * This file serves the main API architecture, a connection to create
  * and call the AI responses through the EDITING message or through
- * SENDING message form the users. This will help the ai to know what might do next
+ * SENDING message form the users. This will help the AI to know what might do next
+ * This file also includes the call for CRON activities
  */
 
 import { EventInterface } from "@/interface";
 import TelegramBot, { EventMetadata } from "node-telegram-bot-api";
 import core from "./core";
+import mainCron from "@/cron";
 
 export default function APIProcess(api: TelegramBot) {
+  mainCron(api)
+
   api.on("edited_message", (event: EventInterface) => {
     if (event.caption) {
       event.text = event.caption
