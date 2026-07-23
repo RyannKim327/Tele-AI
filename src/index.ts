@@ -48,7 +48,6 @@ function main() {
     let api: TelegramBot | null = null
 
     if (url) {
-
       if (url.endsWith("/")) {
         url = url.substring(0, url.length - 1)
       }
