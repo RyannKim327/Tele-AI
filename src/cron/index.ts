@@ -9,6 +9,7 @@ import nodeCron from "node-cron";
 import TelegramBot from "node-telegram-bot-api";
 import drinkWater from "./drink-water";
 import bibleVerse from "./verse";
+import checkup from "./checkup";
 
 export default async function mainCron(api: TelegramBot) {
   const lists = await gist(USERS)
@@ -29,6 +30,14 @@ export default async function mainCron(api: TelegramBot) {
     users.map(userId => {
       bibleVerse(api, parseInt(userId), lists[userId])
     })
+  }, {
+    noOverlap: true,
+    timezone: "Asia/Manila"
+  })
+
+  // TODO: To check the user every last 12 hours from the last chats
+  nodeCron.schedule("0 * * * *", () => {
+    checkup(api)
   }, {
     noOverlap: true,
     timezone: "Asia/Manila"
